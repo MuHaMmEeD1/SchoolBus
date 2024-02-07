@@ -1,0 +1,107 @@
+﻿<Page x:Class="SchoolBusWpfProje.View.BasePageView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SchoolBusWpfProje.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="900"
+      Background="Transparent"
+      Title="BasePageView"
+      
+      >
+
+    <Grid>
+
+        <Border Background="#F2B916" CornerRadius="12">
+
+        </Border>
+
+        <Grid Background="Transparent">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="12*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Background="Green"/>
+
+                <StackPanel Grid.Row="1" Margin="5 5 0 5">
+                    <Button Content="Qeydiyyat" 
+                            Margin="0 0 0 7" 
+                            Command="{Binding ReaderChangeCommand}"
+                            />
+                    <Button Content="Sinifler" 
+                            Margin="0 0 0 7"
+                            Command="{Binding ClassChangeCommand}"
+                            />
+                    <Button Content="Valideynler"
+                            Margin="0 0 0 7"
+                            Command="{Binding ParentChangeCommand}"
+                            />
+                    <Button Content="telebeler"
+                            Margin="0 0 0 7" 
+                            Command="{Binding StudentChangeCommand}"
+                            />
+                    <Button Content="Masinlar"
+                            Margin="0 0 0 7"
+                            Command="{Binding CarChangeCommand}"
+                            />
+                    <Button Content="Suruculer" 
+                            Margin="0 0 0 7"
+                            Command="{Binding DriverChangeCommand}"
+                            />
+                   
+                </StackPanel>
+                
+                
+            </Grid>
+
+            <Grid Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+
+
+                    <Button Background="#F23E16"
+                            Width="23"
+                            Height="23"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            
+                            Margin="0 0 14 0"
+                            BorderThickness="1"
+                            BorderBrush="#80210B"
+                            Content="X"
+                            Foreground="#80210B"
+                            Padding="0 0 0 3"
+                            
+                            Command="{Binding CloseCommand}"
+                             Style="{StaticResource MaterialDesignRaisedLightButton}" 
+                            
+                            ></Button>
+
+
+
+
+                </Grid>
+
+                <Frame Name="BasePageFream" Grid.Row="1" Margin="10 0 10 10" Source="ReaderView.xaml"/>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Page>
