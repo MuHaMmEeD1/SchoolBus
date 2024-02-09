@@ -11,8 +11,8 @@ using ShcoolBusDataAccess.Contexts;
 namespace ShcoolBusDataAccess.Migrations
 {
     [DbContext(typeof(SchoolBusContext))]
-    [Migration("20240209110716_mig3")]
-    partial class mig3
+    [Migration("20240209142657_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,10 +41,7 @@ namespace ShcoolBusDataAccess.Migrations
             modelBuilder.Entity("SchoolBusModel.Entitys.normul.Car", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int")
@@ -67,6 +64,14 @@ namespace ShcoolBusDataAccess.Migrations
                     b.ToTable("Cars");
 
                     b.HasData(
+                        new
+                        {
+                            Id = 0,
+                            Capacity = 10,
+                            CarNumber = "00-aa-000",
+                            Marka = "default",
+                            Model = "default"
+                        },
                         new
                         {
                             Id = 1,

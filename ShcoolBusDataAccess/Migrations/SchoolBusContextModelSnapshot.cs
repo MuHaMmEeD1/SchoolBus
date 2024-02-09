@@ -39,10 +39,7 @@ namespace ShcoolBusDataAccess.Migrations
             modelBuilder.Entity("SchoolBusModel.Entitys.normul.Car", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("Capacity")
                         .HasColumnType("int")
@@ -65,6 +62,14 @@ namespace ShcoolBusDataAccess.Migrations
                     b.ToTable("Cars");
 
                     b.HasData(
+                        new
+                        {
+                            Id = 0,
+                            Capacity = 10,
+                            CarNumber = "00-aa-000",
+                            Marka = "default",
+                            Model = "default"
+                        },
                         new
                         {
                             Id = 1,

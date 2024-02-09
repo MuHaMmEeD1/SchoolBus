@@ -21,8 +21,8 @@
         <Grid Background="Transparent">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="14*"/>
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">

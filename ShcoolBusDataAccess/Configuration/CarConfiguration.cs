@@ -13,7 +13,7 @@ namespace ShcoolBusDataAccess.Configuration
     {
         public void Configure(EntityTypeBuilder<Car> builder)
         {
-
+            builder.Property(c=>c.Id).ValueGeneratedNever();
             builder.Property(c => c.CarNumber).HasColumnType("nvarchar(9)");
             builder.Property(c => c.Marka).HasColumnType("nvarchar(20)");
             builder.Property(c => c.Model).HasColumnType("nvarchar(20)");
@@ -21,6 +21,7 @@ namespace ShcoolBusDataAccess.Configuration
 
 
             builder.HasData(
+                new Car() { Id=0, Marka = "default", Model="default", CarNumber="00-aa-000", Capacity = 10},
                 new Car() { Id=1, Marka = "BWE", Model="BWE12", CarNumber="01-MN-001", Capacity = 20},
                 new Car() { Id=2, Marka = "KIA", Model="KIA12", CarNumber="02-WY-245", Capacity = 22}
                 

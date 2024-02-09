@@ -15,7 +15,7 @@ namespace ShcoolBusDataAccess.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string StrConnection = "Data Source=DESKTOP-RV3QOTA\\SQLEXPRESS;" +
-                "Initial Catalog=SchoolBusDb;" +
+                "Initial Catalog=SchoolBus;" +
                 "Integrated Security=True;" +
                 "Connect Timeout=30;" +
                 "Encrypt=True;" +

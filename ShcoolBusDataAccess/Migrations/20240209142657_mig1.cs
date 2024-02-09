@@ -12,8 +12,7 @@ namespace ShcoolBusDataAccess.Migrations
                 name: "Cars",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Marka = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     CarNumber = table.Column<string>(type: "nvarchar(9)", nullable: false),
@@ -125,6 +124,44 @@ namespace ShcoolBusDataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Cars",
+                columns: new[] { "Id", "Capacity", "CarNumber", "Marka", "Model" },
+                values: new object[,]
+                {
+                    { 0, 10, "00-aa-000", "default", "default" },
+                    { 1, 20, "01-MN-001", "BWE", "BWE12" },
+                    { 2, 22, "02-WY-245", "KIA", "KIA12" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Class",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Class_1" },
+                    { 2, "Class_2" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Parents",
+                columns: new[] { "Id", "FirstName", "LastName", "Phone" },
+                values: new object[,]
+                {
+                    { 1, "Parent_1", "Parent_1", "050-234-56-87" },
+                    { 2, "Parent_2", "Parent_2", "055-837-17-54" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Drivers",
+                columns: new[] { "Id", "CarId", "FirstName", "LastName", "Phone" },
+                values: new object[] { 1, 1, "Driver_1", "Driver_1", "055-234-45-87" });
+
+            migrationBuilder.InsertData(
+                table: "Drivers",
+                columns: new[] { "Id", "CarId", "FirstName", "LastName", "Phone" },
+                values: new object[] { 2, 2, "Driver_2", "Driver_2", "070-345-26-76" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Drivers_CarId",

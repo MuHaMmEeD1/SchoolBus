@@ -13,8 +13,8 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="15*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Background="Red">
@@ -27,20 +27,66 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <ListView Grid.Row="0" ItemsSource="{Binding studentPageReader}" SelectedItem="{Binding StudentPage}">
+                    <ListView x:Name="ListView" Grid.Row="0" ItemsSource="{Binding studentPageReader}" SelectedItem="{Binding StudentPage}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
-                                <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="FirstName" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="LastName" DisplayMemberBinding="{Binding LastName}" />
                                 <GridViewColumn Header="Parents" DisplayMemberBinding="{Binding ParentsNames}" />
-                                <GridViewColumn Header="Class Name" DisplayMemberBinding="{Binding ClassName}" />
+                                <GridViewColumn Header="ClassName" DisplayMemberBinding="{Binding ClassName}" />
                                 <GridViewColumn Header="Actions">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button Content="Add" Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ListView}}" Margin="5"/>
-                                                <Button Content="Update" Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" Margin="5"/>
+                                                <Button Content="Remove" 
+                                                        Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                                        CommandParameter="{Binding ElementName=Id}"
+                                                        
+                                                        
+                                                        Margin="0 5 5 5"/>
+
+                                                <Button Content="Update" 
+                                                        Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                                        
+                                                        
+                                                        Margin="5"/>
+                                                <Label Name="Id" Content="{Binding Id}" Padding="0" Width="0" Height="0" Visibility="Hidden"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+
+                    <ListView x:Name="ListView2" Grid.Row="1" ItemsSource="{Binding studentPageReaderQeydiyatsizlar}" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                                <GridViewColumn Header="FirstName" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="LastName" DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn Header="Parents" DisplayMemberBinding="{Binding ParentsNames}" />
+                                <GridViewColumn Header="ClassName" DisplayMemberBinding="{Binding ClassName}" />
+                                <GridViewColumn Header="Actions">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="Add" 
+                                                        Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                                        CommandParameter="{Binding ElementName=Id}"
+                                                        
+                                                        
+                                                        Margin="5"/>
+                                                
+                                                <Button Content="Update" 
+                                                        Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                                        
+                                                        
+                                                        Margin="5"/>
+                                                <Label Name="Id" Content="{Binding Id}" Padding="0" Width="0" Height="0" Visibility="Hidden"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>

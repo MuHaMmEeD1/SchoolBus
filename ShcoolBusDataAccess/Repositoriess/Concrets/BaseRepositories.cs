@@ -27,5 +27,10 @@ namespace ShcoolBusDataAccess.Repositoriess.Concrets
 
             return Entity.ToList();
         }
+
+        public void Save()
+        {
+            SchoolBusContext.SaveChanges();
+        }
     }
 }
