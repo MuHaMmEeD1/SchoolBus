@@ -13,13 +13,14 @@ namespace SchoolBusWpfProje.ViewModels
     public class ReaderViewModel
     {
         public BasePageView basePageView { get; set; }
-        public List<StudentPageReader> studentPageReader { get; set; }
+        public List<StudentPageReader> studentPageReader { get; set; } = new List<StudentPageReader>();
+        public StudentPageReader StudentPage {  get; set; }
 
         public ReaderViewModel(BasePageView basePageView)
         {
             this.basePageView = basePageView;
 
-
+            DTOS_StudentPReader();
         }
 
 
@@ -28,9 +29,26 @@ namespace SchoolBusWpfProje.ViewModels
 
             BaseRepositories<Student> StudentBR = new BaseRepositories<Student>();
 
-            foreach (Student student in StudentBR.GetAllEntity()) { 
-            
-                studentPageReader
+            studentPageReader.Clear();
+
+            foreach (Student student in StudentBR.GetAllEntity()) {
+
+
+                string ParentsNames = "";
+                foreach (var parent in student.Parents)
+                {
+                    ParentsNames += parent.FirstName + " ";
+                }
+
+                studentPageReader.Add(
+                    new StudentPageReader() { 
+                        Id = student.Id,
+                        FirstName = student.FirstName,
+                        LastName = student.LastName,
+                        ClassName = student.Class.Name,
+                        ParentsNames = ParentsNames,
+                        
+                });
             
             }
 

@@ -34,6 +34,7 @@ namespace ShcoolBusDataAccess.Contexts
         {
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+        
 
             //modelBuilder.ApplyConfiguration(new CarConfiguration());
             //modelBuilder.ApplyConfiguration(new ClassConfihuration());

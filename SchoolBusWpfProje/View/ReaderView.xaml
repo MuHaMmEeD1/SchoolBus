@@ -27,15 +27,31 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0">
-                        
-                        
-                    </DataGrid>
+                    <ListView Grid.Row="0" ItemsSource="{Binding studentPageReader}" SelectedItem="{Binding StudentPage}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn Header="Parents" DisplayMemberBinding="{Binding ParentsNames}" />
+                                <GridViewColumn Header="Class Name" DisplayMemberBinding="{Binding ClassName}" />
+                                <GridViewColumn Header="Actions">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="Add" Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ListView}}" Margin="5"/>
+                                                <Button Content="Update" Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" Margin="5"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
-                    <DataGrid Grid.Row="0">
 
 
-                    </DataGrid>
+
 
                 </Grid>
                 

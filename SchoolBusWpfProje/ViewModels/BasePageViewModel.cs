@@ -26,6 +26,8 @@ namespace SchoolBusWpfProje.ViewModels
             this.baseFileView = baseFileView;
             this.basePageView = basePageView;
 
+            basePageView.BasePageFream.Navigate(new ReaderView() { DataContext = new ReaderViewModel(basePageView) });
+
 
 
             CloseCommand = new MyRealyCommand(CloseProgramCommand);

@@ -17,6 +17,7 @@ namespace ShcoolBusDataAccess.Configuration
             builder.Property(c => c.FirstName).HasColumnType("nvarchar(30)");
             builder.Property(c => c.LastName).HasColumnType("nvarchar(30)");
 
+
         }
     }
 }

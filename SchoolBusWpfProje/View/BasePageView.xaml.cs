@@ -23,6 +23,8 @@ namespace SchoolBusWpfProje.View
     {
         public BasePageView(BaseFileView baseFileView)
         {
+
+
             InitializeComponent();
 
             this.DataContext = new BasePageViewModel(baseFileView, this);
