@@ -13,6 +13,7 @@ namespace SchoolBusModel.Entitys.normul
         public string Marka { get; set; }
         public string Model { get; set; }
         public string CarNumber { get; set; }
+        public int FullPlace { get; set; }
         public int Capacity { get; set; }
         public virtual ICollection<Student> Students { get; set; }
         public virtual Driver Driver { get; set; }

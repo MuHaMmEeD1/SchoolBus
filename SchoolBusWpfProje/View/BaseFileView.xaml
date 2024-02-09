@@ -12,6 +12,8 @@
                   WindowStyle="None"
                   ResizeMode="NoResize"
                   Background="Transparent"
+                  WindowStartupLocation="CenterScreen"
+
                   >
 
     <WindowChrome.WindowChrome>

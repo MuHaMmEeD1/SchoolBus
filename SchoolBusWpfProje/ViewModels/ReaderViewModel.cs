@@ -31,14 +31,15 @@ namespace SchoolBusWpfProje.ViewModels
             this.basePageView = basePageView;
 
             RemoveCommand = new MyRealyCommand(RemoveCommandFunction);
+            AddCommand = new MyRealyCommand(AddCommandFunction);
 
             DTOS_StudentPReader();
         }
 
         
-        void RemoveCommandFunction(object? a)    
+        void RemoveCommandFunction(object? par) 
         {
-            Label label = a as Label;
+            Label label = par as Label;
             int id = (int)label.Content;
 
             var Students = baseRepositories.GetAllEntity();
@@ -46,7 +47,8 @@ namespace SchoolBusWpfProje.ViewModels
             {
                 if (id == Students[i].Id)
                 {
-                    Students[i].CarId = 0; 
+                    Students[i].Car.FullPlace -= 1;
+                    Students[i].CarId = 0;
                 }
             }
                 
@@ -57,6 +59,16 @@ namespace SchoolBusWpfProje.ViewModels
             DTOS_StudentPReader();
 
             basePageView.BasePageFream.Navigate(new ReaderView() { DataContext = new ReaderViewModel(basePageView)});
+        }
+        void AddCommandFunction(object? par)
+        {
+            Label label = par as Label; 
+            int id = (int) label.Content;
+
+            AddStudentWindowView addStudentWindowView = new AddStudentWindowView();
+            addStudentWindowView.DataContext = new AddStudentWindowViewModel(basePageView, addStudentWindowView, id);
+            addStudentWindowView.Show();
+
         }
 
 
