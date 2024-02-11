@@ -4,23 +4,138 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolBusWpfProje.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ReaderView" Background="Transparent">
 
     <Grid Background="Transparent">
-        <Border Background="#F2E616" CornerRadius="12">
+        <Border Background="#F0C681" CornerRadius="12">
 
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="12*"/>
                 </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Background="Red">
+                <StackPanel Name="StackPanelAddStudent" Grid.Column="0" Background="#E6B46E">
+
+                    <ComboBox
+                        
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                        materialDesign:HintAssist.Hint="Student-FullName"
+                        materialDesign:HintAssist.Background="#E67812"
+                        materialDesign:HintAssist.Foreground="White"
+                        
+                        ItemsSource="{Binding StudentFullNames}"
+                        
+                        BorderBrush="black"
+                        BorderThickness="0.8"
+                        Margin="15 20 15 5"
+                        Background="#E67812"
+                        Foreground="Black"
+                        Height="40"
+                        Padding="10 0 7 0"
+
+                        >
+       
+                        
                     
+                    </ComboBox>
+
+
+
+                    <ComboBox
+      
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      materialDesign:HintAssist.Hint="Parent-Name"
+                        materialDesign:HintAssist.Background="#E67812"
+                        materialDesign:HintAssist.Foreground="White"   
+                        
+                        ItemsSource="{Binding ParentNames}"
+                        
+                      BorderBrush="black"
+                      BorderThickness="0.8"
+                      Margin="15 15 15 5"
+                      Background="#E67812"
+                        Foreground="Black"
+                      Height="40"
+                      Padding="10 0 7 0"
+                      />
+
+                    <ComboBox
+      
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      materialDesign:HintAssist.Hint="Parent-Name"
+                        materialDesign:HintAssist.Background="#E67812"
+                        materialDesign:HintAssist.Foreground="White"       
+                         
+                        ItemsSource="{Binding ParentNames}"
+                        
+                      BorderBrush="black"
+                      BorderThickness="0.8"
+                      Margin="15 15 15 5"
+                      Background="#E67812"
+                        Foreground="Black"
+                      Height="40"
+                      Padding="10 0 7 0"
+                      />
+
+                    <ComboBox
+      
+                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                       materialDesign:HintAssist.Hint="Class-Name"
+                        materialDesign:HintAssist.Background="#E67812"
+                        materialDesign:HintAssist.Foreground="White"       
+                        
+                                                 
+                        ItemsSource="{Binding ClassNames}"
+                        
+                        
+                       BorderBrush="black"
+                       BorderThickness="0.8"
+                       Margin="15 15 15 5"
+                       Background="#E67812"
+                        Foreground="Black"
+                       Height="40"
+                       Padding="10 0 7 0"
+                       />
+
+
+                    <ComboBox
+      
+                       Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                       materialDesign:HintAssist.Hint="Car-Name"
+                        materialDesign:HintAssist.Background="#E67812"
+                        materialDesign:HintAssist.Foreground="White"  
+                                                 
+                        ItemsSource="{Binding CarNames}"
+                        
+                       BorderBrush="black"
+                       BorderThickness="0.8"
+                       Margin="15 15 15 5"
+                       Background="#E67812"
+                        Foreground="Black"
+                       Height="40"
+                       Padding="10 0 7 0"
+                       />
+
+
+                    <Button Grid.Column="0" Content="Add" Margin="15 30 15 5"
+
+                      Background="#E67812"
+                      BorderBrush="Black"
+                      BorderThickness="1"
+                      Command="{Binding AddStudentCommand}"
+                      CommandParameter="{Binding ElementName=StackPanelAddStudent}" 
+
+                      />
+
                 </StackPanel>
 
+                
+                
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -30,11 +145,41 @@
                     <ListView x:Name="ListView" Grid.Row="0" ItemsSource="{Binding studentPageReader}" SelectedItem="{Binding StudentPage}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
-                                <GridViewColumn Header="FirstName" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="LastName" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="Parents" DisplayMemberBinding="{Binding ParentsNames}" />
-                                <GridViewColumn Header="ClassName" DisplayMemberBinding="{Binding ClassName}" />
+                                <GridViewColumn Header="ID" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding Id}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="FirstName" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding FirstName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="LastName" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding LastName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Parents"  >
+                                    <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding ParentsNames}"/>
+                                    </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ClassName">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding ClassName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Header="Actions">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -42,15 +187,13 @@
                                                 <Button Content="Remove" 
                                                         Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
                                                         CommandParameter="{Binding ElementName=Id}"
+                                                        Background="#E67812"
+                                                        BorderBrush="Black"
+                                                        BorderThickness="1"
                                                         
-                                                        
-                                                        Margin="0 5 5 5"/>
+                                                        Margin="0 0 0 0"/>
 
-                                                <Button Content="Update" 
-                                                        Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
-                                                        
-                                                        
-                                                        Margin="5"/>
+                                               
                                                 <Label Name="Id" Content="{Binding Id}" Padding="0" Width="0" Height="0" Visibility="Hidden"/>
                                             </StackPanel>
                                         </DataTemplate>
@@ -65,11 +208,41 @@
                     <ListView x:Name="ListView2" Grid.Row="1" ItemsSource="{Binding studentPageReaderQeydiyatsizlar}" >
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
-                                <GridViewColumn Header="FirstName" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="LastName" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="Parents" DisplayMemberBinding="{Binding ParentsNames}" />
-                                <GridViewColumn Header="ClassName" DisplayMemberBinding="{Binding ClassName}" />
+                                <GridViewColumn Header="ID" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding Id}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="FirstName" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding FirstName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="LastName" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding LastName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Parents"  >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding ParentsNames}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="ClassName">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding ClassName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                                 <GridViewColumn Header="Actions">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -77,15 +250,13 @@
                                                 <Button Content="Add" 
                                                         Command="{Binding DataContext.AddCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
                                                         CommandParameter="{Binding ElementName=Id}"
-                                                        
-                                                        
-                                                        Margin="5"/>
+                                                       Background="#E67812"
+                                                       BorderBrush="Black"
+                                                       BorderThickness="1"
+   
+                                                       Margin="10 0 0 0"/>
                                                 
-                                                <Button Content="Update" 
-                                                        Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
-                                                        
-                                                        
-                                                        Margin="5"/>
+                                             
                                                 <Label Name="Id" Content="{Binding Id}" Padding="0" Width="0" Height="0" Visibility="Hidden"/>
                                             </StackPanel>
                                         </DataTemplate>

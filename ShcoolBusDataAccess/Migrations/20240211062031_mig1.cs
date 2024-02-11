@@ -16,6 +16,7 @@ namespace ShcoolBusDataAccess.Migrations
                     Marka = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     CarNumber = table.Column<string>(type: "nvarchar(9)", nullable: false),
+                    FullPlace = table.Column<int>(type: "int", nullable: false),
                     Capacity = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -27,8 +28,7 @@ namespace ShcoolBusDataAccess.Migrations
                 name: "Class",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(20)", nullable: false)
                 },
                 constraints: table =>
@@ -60,7 +60,7 @@ namespace ShcoolBusDataAccess.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(30)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(13)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CarId = table.Column<int>(type: "int", nullable: false)
+                    CarId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,8 +69,7 @@ namespace ShcoolBusDataAccess.Migrations
                         name: "FK_Drivers_Cars_CarId",
                         column: x => x.CarId,
                         principalTable: "Cars",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -81,8 +80,8 @@ namespace ShcoolBusDataAccess.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(30)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(30)", nullable: false),
-                    ClassId = table.Column<int>(type: "int", nullable: false),
-                    CarId = table.Column<int>(type: "int", nullable: false)
+                    ClassId = table.Column<int>(type: "int", nullable: true),
+                    CarId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -91,35 +90,35 @@ namespace ShcoolBusDataAccess.Migrations
                         name: "FK_Students_Cars_CarId",
                         column: x => x.CarId,
                         principalTable: "Cars",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Students_Class_ClassId",
                         column: x => x.ClassId,
                         principalTable: "Class",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "ParentStudent",
+                name: "ParentsStudents",
                 columns: table => new
                 {
-                    ParentsId = table.Column<int>(type: "int", nullable: false),
-                    StudentsId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ParentId = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ParentStudent", x => new { x.ParentsId, x.StudentsId });
+                    table.PrimaryKey("PK_ParentsStudents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ParentStudent_Parents_ParentsId",
-                        column: x => x.ParentsId,
+                        name: "FK_ParentsStudents_Parents_ParentId",
+                        column: x => x.ParentId,
                         principalTable: "Parents",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ParentStudent_Students_StudentsId",
-                        column: x => x.StudentsId,
+                        name: "FK_ParentsStudents_Students_StudentId",
+                        column: x => x.StudentId,
                         principalTable: "Students",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -127,12 +126,12 @@ namespace ShcoolBusDataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cars",
-                columns: new[] { "Id", "Capacity", "CarNumber", "Marka", "Model" },
+                columns: new[] { "Id", "Capacity", "CarNumber", "FullPlace", "Marka", "Model" },
                 values: new object[,]
                 {
-                    { 0, 10, "00-aa-000", "default", "default" },
-                    { 1, 20, "01-MN-001", "BWE", "BWE12" },
-                    { 2, 22, "02-WY-245", "KIA", "KIA12" }
+                    { 0, 10, "00-aa-000", 0, "default", "default" },
+                    { 1, 20, "01-MN-001", 0, "BWE", "BWE12" },
+                    { 2, 22, "02-WY-245", 0, "KIA", "KIA12" }
                 });
 
             migrationBuilder.InsertData(
@@ -140,6 +139,7 @@ namespace ShcoolBusDataAccess.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
+                    { 0, "Default" },
                     { 1, "Class_1" },
                     { 2, "Class_2" }
                 });
@@ -156,23 +156,48 @@ namespace ShcoolBusDataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "Drivers",
                 columns: new[] { "Id", "CarId", "FirstName", "LastName", "Phone" },
-                values: new object[] { 1, 1, "Driver_1", "Driver_1", "055-234-45-87" });
+                values: new object[,]
+                {
+                    { 1, 1, "Driver_1", "Driver_1", "055-234-45-87" },
+                    { 2, 2, "Driver_2", "Driver_2", "070-345-26-76" }
+                });
 
             migrationBuilder.InsertData(
-                table: "Drivers",
-                columns: new[] { "Id", "CarId", "FirstName", "LastName", "Phone" },
-                values: new object[] { 2, 2, "Driver_2", "Driver_2", "070-345-26-76" });
+                table: "Students",
+                columns: new[] { "Id", "CarId", "ClassId", "FirstName", "LastName" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, "Student_1", "Student_1" },
+                    { 2, 2, 2, "Student_2", "Student_2" },
+                    { 3, 0, 0, "Student_3", "Student_3" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "ParentsStudents",
+                columns: new[] { "Id", "ParentId", "StudentId" },
+                values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "ParentsStudents",
+                columns: new[] { "Id", "ParentId", "StudentId" },
+                values: new object[] { 2, 2, 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Drivers_CarId",
                 table: "Drivers",
                 column: "CarId",
-                unique: true);
+                unique: true,
+                filter: "[CarId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ParentStudent_StudentsId",
-                table: "ParentStudent",
-                column: "StudentsId");
+                name: "IX_ParentsStudents_ParentId",
+                table: "ParentsStudents",
+                column: "ParentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ParentsStudents_StudentId",
+                table: "ParentsStudents",
+                column: "StudentId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_CarId",
@@ -191,7 +216,7 @@ namespace ShcoolBusDataAccess.Migrations
                 name: "Drivers");
 
             migrationBuilder.DropTable(
-                name: "ParentStudent");
+                name: "ParentsStudents");
 
             migrationBuilder.DropTable(
                 name: "Parents");

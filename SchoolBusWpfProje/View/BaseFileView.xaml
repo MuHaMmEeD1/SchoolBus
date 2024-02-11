@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="BaseFileView" 
                   Height="600" 
-                  Width="1210" 
+                  Width="1150" 
                   ShowsNavigationUI="False"
                   WindowStyle="None"
                   ResizeMode="NoResize"

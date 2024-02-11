@@ -14,7 +14,7 @@
 
     <Grid>
 
-        <Border Background="#F2B916" CornerRadius="12">
+        <Border Background="#E6AA19" CornerRadius="12">
 
         </Border>
 
@@ -35,29 +35,47 @@
                 <Label Grid.Row="0" Background="Green"/>
 
                 <StackPanel Grid.Row="1" Margin="5 5 0 5">
-                    <Button Content="Qeydiyyat" 
-                            Margin="0 0 0 7" 
+                    <Button Content="Reader" 
+                            Margin="5 5 5 5" 
                             Command="{Binding ReaderChangeCommand}"
+                            Background="#E67812"
+                            BorderBrush="Black"
+                            BorderThickness="1"
                             />
-                    <Button Content="Sinifler" 
-                            Margin="0 0 0 7"
+                    <Button Content="Class" 
+                            Margin="5 5 5 5"
                             Command="{Binding ClassChangeCommand}"
+                             Background="#E67812"
+                             BorderBrush="Black"
+                             BorderThickness="1"
                             />
-                    <Button Content="Valideynler"
-                            Margin="0 0 0 7"
+                    <Button Content="Parent"
+                            Margin="5 5 5 5"
                             Command="{Binding ParentChangeCommand}"
+                             Background="#E67812"
+                             BorderBrush="Black"
+                             BorderThickness="1"
                             />
-                    <Button Content="telebeler"
-                            Margin="0 0 0 7" 
+                    <Button Content="Student"
+                            Margin="5 5 5 5"
                             Command="{Binding StudentChangeCommand}"
+                             Background="#E67812"
+                             BorderBrush="Black"
+                             BorderThickness="1"
                             />
-                    <Button Content="Masinlar"
-                            Margin="0 0 0 7"
+                    <Button Content="Car"
+                            Margin="5 5 5 5"
                             Command="{Binding CarChangeCommand}"
+                             Background="#E67812"
+                             BorderBrush="Black"
+                             BorderThickness="1"
                             />
-                    <Button Content="Suruculer" 
-                            Margin="0 0 0 7"
+                    <Button Content="Driver" 
+                            Margin="5 5 5 5"
                             Command="{Binding DriverChangeCommand}"
+                             Background="#E67812"
+                             BorderBrush="Black"
+                             BorderThickness="1"
                             />
                    
                 </StackPanel>
@@ -75,7 +93,7 @@
                 <Grid Grid.Row="0">
 
 
-                    <Button Background="#F23E16"
+                    <Button Background="#E63B15"
                             Width="23"
                             Height="23"
                             VerticalAlignment="Center"
@@ -84,9 +102,11 @@
                             Margin="0 0 14 0"
                             BorderThickness="1"
                             BorderBrush="#80210B"
-                            Content="X"
+                            Content="╳"
                             Foreground="#80210B"
                             Padding="0 0 0 3"
+                            FontSize="10"
+                            FontWeight="Bold"
                             
                             Command="{Binding CloseCommand}"
                              Style="{StaticResource MaterialDesignRaisedLightButton}" 

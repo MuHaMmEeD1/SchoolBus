@@ -32,5 +32,15 @@ namespace ShcoolBusDataAccess.Repositoriess.Concrets
         {
             SchoolBusContext.SaveChanges();
         }
+
+        public void Add(T entity)
+        {
+            SchoolBusContext.Add(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            SchoolBusContext.Remove(entity);
+        }
     }
 }

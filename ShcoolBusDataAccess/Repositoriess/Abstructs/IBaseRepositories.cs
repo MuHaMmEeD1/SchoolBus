@@ -12,6 +12,8 @@ namespace ShcoolBusDataAccess.Repositoriess.Abstructs
 
         List<T> GetAllEntity();
         void Save();
+        void Add(T entity);
+        void Delete(T entity);
 
 
     }

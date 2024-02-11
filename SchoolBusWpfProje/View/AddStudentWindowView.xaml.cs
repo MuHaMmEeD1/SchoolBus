@@ -23,5 +23,7 @@ namespace SchoolBusWpfProje.View
         {
             InitializeComponent();
         }
+
+
     }
 }

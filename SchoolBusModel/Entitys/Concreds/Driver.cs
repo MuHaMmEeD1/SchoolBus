@@ -13,7 +13,7 @@ namespace SchoolBusModel.Entitys.normul
         public string LastName { get; set; }
         public string Phone { get; set; }
 
-        public int CarId { get; set; }
+        public int? CarId { get; set; } = null;
         public virtual Car Car { get; set; }
 
     }

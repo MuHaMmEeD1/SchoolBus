@@ -10,21 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SchoolBusWpfProje.View
 {
     /// <summary>
-    /// Interaction logic for ReaderView.xaml
+    /// Interaction logic for UpdateStudentWindowView.xaml
     /// </summary>
-    public partial class ReaderView : Page
+    public partial class UpdateStudentWindowView : Window
     {
-        public ReaderView()
+        public UpdateStudentWindowView()
         {
             InitializeComponent();
         }
-
-     
     }
 }
