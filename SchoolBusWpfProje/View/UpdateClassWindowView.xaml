@@ -65,7 +65,7 @@
                   Background="#E67812"
                   BorderBrush="Black"
                   BorderThickness="1"
-                  Command="{Binding AddCommand}"
+                  Command="{Binding UpdateCommand}"
                   CommandParameter="{Binding ElementName=ComboBoxCarChaing}"
 
                   />

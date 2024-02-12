@@ -14,7 +14,7 @@ namespace ShcoolBusDataAccess.Repositoriess.Abstructs
         void Save();
         void Add(T entity);
         void Delete(T entity);
-
+        T GetEntity(int id);
 
     }
 }

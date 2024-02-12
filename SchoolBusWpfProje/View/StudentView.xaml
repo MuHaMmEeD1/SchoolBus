@@ -4,13 +4,156 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SchoolBusWpfProje.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StudentView" Background="Transparent">
 
     <Grid Background="Transparent">
-        <Border Background="#F2E616" CornerRadius="12">
-            <Label Content="Student" FontSize="50"/>
+        <Border Background="#F0C681" CornerRadius="12">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="12*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Name="StackPanelAddStudent" Grid.Column="0" Background="#E6B46E">
+
+
+                    <ComboBox
+   
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                materialDesign:HintAssist.Hint="FirstName"
+                 materialDesign:HintAssist.Background="#E67812"
+                 materialDesign:HintAssist.Foreground="White"       
+                 
+                                          
+                 IsEditable ="True"
+                 
+                BorderBrush="black"
+                BorderThickness="0.8"
+                Margin="15 15 15 5"
+                Background="#E67812"
+                 Foreground="Black"
+                Height="40"
+                Padding="10 0 7 0"
+                >
+
+                    </ComboBox>
+
+                    <ComboBox
+   
+                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                materialDesign:HintAssist.Hint="LastName"
+                 materialDesign:HintAssist.Background="#E67812"
+                 materialDesign:HintAssist.Foreground="White"       
+                 
+                                          
+                 IsEditable ="True"
+                 
+                BorderBrush="black"
+                BorderThickness="0.8"
+                Margin="15 15 15 5"
+                Background="#E67812"
+                 Foreground="Black"
+                Height="40"
+                Padding="10 0 7 0"
+                >
+
+                    </ComboBox>
+
+
+
+
+
+
+
+
+
+
+                    <Button Grid.Column="0" Content="Add" Margin="15 30 15 5"
+
+               Background="#E67812"
+               BorderBrush="Black"
+               BorderThickness="1"
+               Command="{Binding AddCommand}"
+               CommandParameter="{Binding ElementName=StackPanelAddStudent}" 
+
+               />
+
+                </StackPanel>
+
+
+
+                <Grid Grid.Column="1">
+
+                    <ListView x:Name="ListView" Grid.Row="0" ItemsSource="{Binding studentPageListViews}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="ID" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding Id}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="FirstName" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding FirstName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="LastName" >
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Margin="15 0 0 0" Content="{Binding LastName}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="              Actions" Width="200">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Content="Remove" 
+                                              Command="{Binding DataContext.RemoveCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                              CommandParameter="{Binding ElementName=Id}"
+                                              Background="#E67812"
+                                              BorderBrush="Black"
+                                              BorderThickness="1"
+                  
+                                              Margin="10 0 0 0"/>
+
+                                                <Button Content="Update" 
+                                              Command="{Binding DataContext.UpdateCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                                              CommandParameter="{Binding ElementName=Id}"
+                                              Background="#E67812"
+                                              BorderBrush="Black"
+                                              BorderThickness="1"
+                  
+                                              Margin="10 0 0 0"/>
+
+                                                <Label Name="Id" Content="{Binding Id}" Padding="0" Width="0" Height="0" Visibility="Hidden"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+
+
+
+                </Grid>
+
+
+            </Grid>
+
 
         </Border>
     </Grid>

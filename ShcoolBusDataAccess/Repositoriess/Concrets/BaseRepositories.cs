@@ -42,5 +42,15 @@ namespace ShcoolBusDataAccess.Repositoriess.Concrets
         {
             SchoolBusContext.Remove(entity);
         }
+
+        public T GetEntity(int id)
+        {
+
+            foreach (T entity in Entity)
+            {
+                if (entity.Id == id) { return entity; }
+            }
+            return Entity.ToList()[0];
+        }
     }
 }

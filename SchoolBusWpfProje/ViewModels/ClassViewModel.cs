@@ -31,6 +31,7 @@ namespace SchoolBusWpfProje.ViewModels
             classPageListViews=new List<ClassPageListView>();
             AddCommand = new MyRealyCommand(AddCommandFunction, CanAddCommandFunction);
             RemoveCommand = new MyRealyCommand(RemoveCommandFunction);
+            UpdateCommand = new MyRealyCommand(UpdateCommandFunction);
 
             ClassPageDTOSChange();
 
@@ -124,6 +125,9 @@ namespace SchoolBusWpfProje.ViewModels
             Label label = par as Label;
             int Id = int.Parse(label.Content.ToString());
 
+            UpdateClassWindowView updateClassWindowView = new UpdateClassWindowView();
+            updateClassWindowView.DataContext = new UpdateClassWindowViewModel(updateClassWindowView, basePageView, Id);
+            updateClassWindowView.Show();
 
         }
 

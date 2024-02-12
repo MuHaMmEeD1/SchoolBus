@@ -151,11 +151,26 @@ namespace SchoolBusWpfProje.ViewModels
         public void StudentFullNamesFunction()
         {
             BaseRepositories<Student> baseRepositories = new BaseRepositories<Student>();
+            BaseRepositories<Parent> baseRepositoriesParents = new BaseRepositories<Parent>();
+
             var students = baseRepositories.GetAllEntity();
+            var parents = baseRepositoriesParents.GetAllEntity();
 
             foreach (var student in students)
             {
-                if(student.ClassId != 0) { continue; }
+                string parentsNames = "";
+                foreach (var parStu in student.ParentsStudents)
+                {
+                    foreach (var par in parents)
+                    {
+
+                        if(par.Id == parStu.ParentId) { parentsNames += par.FirstName; }
+
+                    }
+                }
+
+
+                if(student.ClassId != 0 && parentsNames.Length != 0) { continue; }
                 StudentFullNames.Add($"{student.Id},  {student.FirstName},  {student.LastName}");
 
             }
