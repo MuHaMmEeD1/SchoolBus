@@ -120,6 +120,7 @@ namespace SchoolBusWpfProje.View
             var entity = baseRepositories.GetEntity(Id);
             foreach (var st in entity.Car.Students)
             {
+                st.Car.FullPlace -= 1;
                 st.CarId = null;
             }
             entity.CarId = null;

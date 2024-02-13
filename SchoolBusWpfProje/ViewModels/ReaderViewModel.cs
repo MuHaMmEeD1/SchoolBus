@@ -63,6 +63,8 @@ namespace SchoolBusWpfProje.ViewModels
             var ebtity = baseRepositories.GetEntity(Id);
             ebtity.CarId = null;
             ebtity.ClassId = 0;
+
+          
             baseRepositories.Save();
             BaseRepositories<ParentsStudents> baseRepositories2 = new();
             foreach (var item in ebtity.ParentsStudents)
@@ -70,6 +72,8 @@ namespace SchoolBusWpfProje.ViewModels
                 baseRepositories2.Delete(item);
             }
             baseRepositories2.Save();
+
+
 
             ReaderView readerView = new ReaderView();
             readerView.DataContext = new ReaderViewModel(basePageView);
@@ -80,19 +84,13 @@ namespace SchoolBusWpfProje.ViewModels
             Label label = par as Label;
             int id = (int)label.Content;
 
-            var Students = baseRepositories.GetAllEntity();
-            for (int i = 0; i < Students.Count; i++)
-            {
-                if (id == Students[i].Id)
-                {
-                    Students[i].Car.FullPlace -= 1;
-                    Students[i].CarId = null;
-                }
-            }
+            var Student = baseRepositories.GetEntity(id);
+           
+            Student.Car.FullPlace -= 1;
+            Student.CarId = null;
+              
                 
-            
-
-
+  
             baseRepositories.Save();
 
             basePageView.BasePageFream.Navigate(new ReaderView() { DataContext = new ReaderViewModel(basePageView)});

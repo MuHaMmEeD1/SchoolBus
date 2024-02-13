@@ -37,7 +37,7 @@ namespace SchoolBusWpfProje.ViewModels
 
             foreach (var car in Cars)
             {
-                if(car.Id == 0 && car.Capacity != car.FullPlace) { continue; }
+                if(car.Capacity != car.FullPlace && car.Driver is null) { continue; }
                 CarNames.Add($"{car.Id},  {car.Marka},  {car.CarNumber}" );
             }
 
