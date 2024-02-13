@@ -13,7 +13,7 @@
                   ResizeMode="NoResize"
                   Background="Transparent"
                   WindowStartupLocation="CenterScreen"
-
+                  Icon="../Images/Logo.png"
                   >
 
     <WindowChrome.WindowChrome>

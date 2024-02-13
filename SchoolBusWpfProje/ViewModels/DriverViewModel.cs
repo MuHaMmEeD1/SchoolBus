@@ -118,7 +118,14 @@ namespace SchoolBusWpfProje.View
             int Id = int.Parse(label.Content.ToString());
 
             var entity = baseRepositories.GetEntity(Id);
+            foreach (var st in entity.Car.Students)
+            {
+                st.CarId = null;
+            }
+            entity.CarId = null;
+
             baseRepositories.Delete(entity);
+
             baseRepositories.Save();
 
             DriverView driverView = new DriverView();
