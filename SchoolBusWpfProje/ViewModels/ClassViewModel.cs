@@ -1,4 +1,5 @@
-﻿using SchoolBusModel.Entitys.normul;
+﻿using SchoolBusModel.Entitys.Concreds;
+using SchoolBusModel.Entitys.normul;
 using SchoolBusWpfProje.DTOS;
 using SchoolBusWpfProje.RealyCommands;
 using SchoolBusWpfProje.View;
@@ -103,6 +104,13 @@ namespace SchoolBusWpfProje.ViewModels
                     foreach (var student in Class.Students)
                     {
                         student.ClassId = 0;
+                        student.CarId = 0;
+                        BaseRepositories<ParentsStudents> baseRepositories = new BaseRepositories<ParentsStudents>();
+
+                        foreach (var item in student.ParentsStudents)
+                        {
+                            baseRepositories.Delete(item);
+                        }
                     }
 
                     BaseRepositories.Delete(Class);

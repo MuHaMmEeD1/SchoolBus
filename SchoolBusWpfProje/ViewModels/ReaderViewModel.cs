@@ -211,7 +211,13 @@ namespace SchoolBusWpfProje.ViewModels
 
             foreach (var car in Cars)
             {
-                if (car.Id == 0) { continue; }
+                bool yoxla = true;
+                foreach (var item in new BaseRepositories<Driver>().GetAllEntity())
+                {
+                    if (item.CarId == car.Id) { yoxla = false; break; }
+                }
+
+                if (car.Id == 0 || car.FullPlace == car.Capacity || yoxla) { continue; }
                 CarNames.Add($"{car.Id},  {car.Marka},  {car.CarNumber}");
 
             }
@@ -258,6 +264,7 @@ namespace SchoolBusWpfProje.ViewModels
                 {
                     Students[i].ClassId = ClassId;
                     Students[i].CarId = CarId;
+                    Students[i].Car.FullPlace += 1;
 
                     Students[i].ParentsStudents = new List<ParentsStudents>();
 

@@ -63,6 +63,8 @@ namespace SchoolBusWpfProje.ViewModels
                     {
                         if (students[i].Id == StudentID)
                         {
+                          
+
                             students[i].CarId = car.Id;
                             students[i].Car.FullPlace += 1;
                             break;

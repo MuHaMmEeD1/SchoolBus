@@ -1,0 +1,158 @@
+﻿<Window x:Class="SchoolBusWpfProje.View.UpdateCarWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        xmlns:local="clr-namespace:SchoolBusWpfProje.View"
+        mc:Ignorable="d"
+        Title="UpdateCarWindowView" Height="450" Width="300"    WindowStyle="None"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    Background="Transparent">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Border Background="#F2B916" CornerRadius="12" Padding="0" 
+           BorderBrush="Black" BorderThickness="2"
+           >
+
+
+        </Border>
+
+        <Grid Name ="EsasGrid">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <StackPanel VerticalAlignment="Center">
+                <ComboBox
+      
+                  Name="ComboBoxModel"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                  materialDesign:HintAssist.Hint="Model"
+                  materialDesign:HintAssist.Background="#E67812"
+                  materialDesign:HintAssist.Foreground="White"       
+     
+                   
+                  IsEditable ="True"
+     
+                 BorderBrush="black"
+                 BorderThickness="0.8"
+                 Margin="15 30 15 5"
+                 Background="#E67812"
+                 Foreground="Black"
+                 Height="40"
+                 Padding="10 0 7 0"
+                 >
+
+                </ComboBox>
+
+                <ComboBox
+      
+                  Name="ComboBoxMarka"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                  materialDesign:HintAssist.Hint="Marka"
+                  materialDesign:HintAssist.Background="#E67812"
+                  materialDesign:HintAssist.Foreground="White"       
+     
+                   
+                  IsEditable ="True"
+     
+                 BorderBrush="black"
+                 BorderThickness="0.8"
+                 Margin="15 30 15 5"
+                 Background="#E67812"
+                 Foreground="Black"
+                 Height="40"
+                 Padding="10 0 7 0"
+                 >
+
+                </ComboBox>
+
+                <ComboBox
+      
+                   Name="ComboBoxCarNumber"
+                   Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                   materialDesign:HintAssist.Hint="CarNumber"
+                   materialDesign:HintAssist.Background="#E67812"
+                   materialDesign:HintAssist.Foreground="White"       
+     
+    
+                   IsEditable ="True"
+     
+                  BorderBrush="black"
+                  BorderThickness="0.8"
+                  Margin="15 30 15 5"
+                  Background="#E67812"
+                  Foreground="Black"
+                  Height="40"
+                  Padding="10 0 7 0"
+  >
+
+                </ComboBox>
+
+                <ComboBox
+    
+                 Name="ComboBoxCapacity"
+                 Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                 materialDesign:HintAssist.Hint="Capacrt"
+                 materialDesign:HintAssist.Background="#E67812"
+                 materialDesign:HintAssist.Foreground="White"       
+   
+  
+                 IsEditable ="True"
+   
+                BorderBrush="black"
+                BorderThickness="0.8"
+                Margin="15 30 15 5"
+                Background="#E67812"
+                Foreground="Black"
+                Height="40"
+                Padding="10 0 7 0"
+>
+
+                </ComboBox>
+            </StackPanel>
+
+
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button Grid.Column="0" Content="Update" Margin="10 5 2.5 5"
+                  Background="#E67812"
+                  BorderBrush="Black"
+                  BorderThickness="1"
+                  Command="{Binding UpdateCommand}"
+
+                  />
+
+                <Button Grid.Column="1" Content="Cenle" Margin="2.5 5 10 5"
+                  Background="#E67812"
+                  BorderBrush="Black"
+                  BorderThickness="1"
+                  Command="{Binding CloseCommand}"
+                  />
+
+            </Grid>
+
+        </Grid>
+
+
+
+
+
+    </Grid>
+</Window>
