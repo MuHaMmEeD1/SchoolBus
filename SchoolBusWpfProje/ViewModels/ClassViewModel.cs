@@ -104,7 +104,7 @@ namespace SchoolBusWpfProje.ViewModels
                     foreach (var student in Class.Students)
                     {
                         student.ClassId = 0;
-                        student.CarId = 0;
+                        student.CarId = null;
                         BaseRepositories<ParentsStudents> baseRepositories = new BaseRepositories<ParentsStudents>();
 
                         foreach (var item in student.ParentsStudents)

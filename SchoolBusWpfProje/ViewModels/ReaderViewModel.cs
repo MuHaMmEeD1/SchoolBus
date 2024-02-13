@@ -23,6 +23,7 @@ namespace SchoolBusWpfProje.ViewModels
         public StudentPageReader StudentPage {  get; set; }
         public MyRealyCommand AddCommand { get; set; } 
         public MyRealyCommand RemoveCommand { get; set; }
+        public MyRealyCommand DeleteCommand { get; set; }
 
 
         public List<string> StudentFullNames { get; set; } = new List<string>();
@@ -45,6 +46,7 @@ namespace SchoolBusWpfProje.ViewModels
             RemoveCommand = new MyRealyCommand(RemoveCommandFunction);
             AddCommand = new MyRealyCommand(AddCommandFunction);
             AddStudentCommand = new MyRealyCommand(AddStudentCommandFunction, CanAddStudentCommandFunction);
+            DeleteCommand = new MyRealyCommand(DeleteCommandFunction);
 
             DTOS_StudentPReader();
             StudentFullNamesFunction();
@@ -53,7 +55,26 @@ namespace SchoolBusWpfProje.ViewModels
             CarNamesFunction();
         }
 
+        public void DeleteCommandFunction(object? par)
+        {
+            Label label = par as Label;
+            int Id = int.Parse(label.Content.ToString());
 
+            var ebtity = baseRepositories.GetEntity(Id);
+            ebtity.CarId = null;
+            ebtity.ClassId = 0;
+            baseRepositories.Save();
+            BaseRepositories<ParentsStudents> baseRepositories2 = new();
+            foreach (var item in ebtity.ParentsStudents)
+            {
+                baseRepositories2.Delete(item);
+            }
+            baseRepositories2.Save();
+
+            ReaderView readerView = new ReaderView();
+            readerView.DataContext = new ReaderViewModel(basePageView);
+            basePageView.BasePageFream.Navigate(readerView);
+        }
         void RemoveCommandFunction(object? par) 
         {
             Label label = par as Label;
@@ -65,7 +86,7 @@ namespace SchoolBusWpfProje.ViewModels
                 if (id == Students[i].Id)
                 {
                     Students[i].Car.FullPlace -= 1;
-                    Students[i].CarId = 0;
+                    Students[i].CarId = null;
                 }
             }
                 
@@ -231,7 +252,7 @@ namespace SchoolBusWpfProje.ViewModels
 
             StackPanel stackPanel = par as StackPanel;
             int ClassId = 0;
-            int CarId = 0;
+            int? CarId = null;
 
             var Students = baseRepositories.GetAllEntity();
             var Parents = new BaseRepositories<Parent>().GetAllEntity();
@@ -264,7 +285,10 @@ namespace SchoolBusWpfProje.ViewModels
                 {
                     Students[i].ClassId = ClassId;
                     Students[i].CarId = CarId;
-                    Students[i].Car.FullPlace += 1;
+                    if (CarId is not null)
+                    {
+                        Students[i].Car.FullPlace += 1;
+                    }
 
                     Students[i].ParentsStudents = new List<ParentsStudents>();
 

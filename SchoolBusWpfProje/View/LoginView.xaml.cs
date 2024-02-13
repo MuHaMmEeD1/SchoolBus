@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolBusAppp.ViewModel.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,15 +17,15 @@ using System.Windows.Shapes;
 namespace SchoolBusWpfProje.View
 {
     /// <summary>
-    /// Interaction logic for BaseFileView.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class BaseFileView : NavigationWindow
+    public partial class LoginView : Page
     {
-        public BaseFileView()
+        
+        public LoginView(BaseFileView baseFileView)
         {
             InitializeComponent();
-
-            BaseFream.Navigate(new LoginView(this));
+            this.DataContext = new LoginViewModel(baseFileView, this);
         }
     }
 }

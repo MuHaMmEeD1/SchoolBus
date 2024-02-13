@@ -20,7 +20,7 @@ namespace ShcoolBusDataAccess.Configuration
             builder.HasData(
                 new Student() { Id = 1, FirstName = "Student_1", LastName = "Student_1", CarId = 1, ClassId = 1 },
                 new Student() { Id = 2, FirstName = "Student_2", LastName = "Student_2", CarId = 2, ClassId = 2 },
-                new Student() { Id = 3, FirstName = "Student_3", LastName = "Student_3", CarId = 0, ClassId = 0 });
+                new Student() { Id = 3, FirstName = "Student_3", LastName = "Student_3", CarId = null, ClassId = 0 });
 
         }
     }

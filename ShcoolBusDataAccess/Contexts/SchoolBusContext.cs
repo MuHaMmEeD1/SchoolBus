@@ -14,16 +14,9 @@ namespace ShcoolBusDataAccess.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string StrConnection = "Data Source=DESKTOP-RV3QOTA\\SQLEXPRESS;" +
-                "Initial Catalog=SchoolBus;" +
-                "Integrated Security=True;" +
-                "Connect Timeout=30;" +
-                "Encrypt=True;" +
-                "Trust Server Certificate=True;" +
-                "Application Intent=ReadWrite;" +
-                "Multi Subnet Failover=False";
+            string StrConnection = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SchoolBuss;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
-;
+
 
             optionsBuilder.UseLazyLoadingProxies(true);
             optionsBuilder.UseSqlServer(StrConnection);

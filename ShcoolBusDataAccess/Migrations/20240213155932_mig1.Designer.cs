@@ -12,7 +12,7 @@ using ShcoolBusDataAccess.Contexts;
 namespace ShcoolBusDataAccess.Migrations
 {
     [DbContext(typeof(SchoolBusContext))]
-    [Migration("20240211062031_mig1")]
+    [Migration("20240213155932_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,28 +92,19 @@ namespace ShcoolBusDataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 0,
-                            Capacity = 10,
-                            CarNumber = "00-aa-000",
-                            FullPlace = 0,
-                            Marka = "default",
-                            Model = "default"
-                        },
-                        new
-                        {
                             Id = 1,
                             Capacity = 20,
                             CarNumber = "01-MN-001",
-                            FullPlace = 0,
-                            Marka = "BWE",
-                            Model = "BWE12"
+                            FullPlace = 1,
+                            Marka = "BMW",
+                            Model = "F12"
                         },
                         new
                         {
                             Id = 2,
                             Capacity = 22,
                             CarNumber = "02-WY-245",
-                            FullPlace = 0,
+                            FullPlace = 1,
                             Marka = "KIA",
                             Model = "KIA12"
                         });
@@ -291,7 +282,6 @@ namespace ShcoolBusDataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CarId = 0,
                             ClassId = 0,
                             FirstName = "Student_3",
                             LastName = "Student_3"
@@ -321,7 +311,8 @@ namespace ShcoolBusDataAccess.Migrations
                 {
                     b.HasOne("SchoolBusModel.Entitys.normul.Car", "Car")
                         .WithOne("Driver")
-                        .HasForeignKey("SchoolBusModel.Entitys.normul.Driver", "CarId");
+                        .HasForeignKey("SchoolBusModel.Entitys.normul.Driver", "CarId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Car");
                 });

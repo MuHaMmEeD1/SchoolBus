@@ -9,6 +9,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\schoolbus.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\schoolbus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.26">
       <PrivateAssets>all</PrivateAssets>

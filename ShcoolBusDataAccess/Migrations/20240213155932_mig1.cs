@@ -69,7 +69,8 @@ namespace ShcoolBusDataAccess.Migrations
                         name: "FK_Drivers_Cars_CarId",
                         column: x => x.CarId,
                         principalTable: "Cars",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,9 +130,8 @@ namespace ShcoolBusDataAccess.Migrations
                 columns: new[] { "Id", "Capacity", "CarNumber", "FullPlace", "Marka", "Model" },
                 values: new object[,]
                 {
-                    { 0, 10, "00-aa-000", 0, "default", "default" },
-                    { 1, 20, "01-MN-001", 0, "BWE", "BWE12" },
-                    { 2, 22, "02-WY-245", 0, "KIA", "KIA12" }
+                    { 1, 20, "01-MN-001", 1, "BMW", "F12" },
+                    { 2, 22, "02-WY-245", 1, "KIA", "KIA12" }
                 });
 
             migrationBuilder.InsertData(
@@ -169,7 +169,7 @@ namespace ShcoolBusDataAccess.Migrations
                 {
                     { 1, 1, 1, "Student_1", "Student_1" },
                     { 2, 2, 2, "Student_2", "Student_2" },
-                    { 3, 0, 0, "Student_3", "Student_3" }
+                    { 3, null, 0, "Student_3", "Student_3" }
                 });
 
             migrationBuilder.InsertData(

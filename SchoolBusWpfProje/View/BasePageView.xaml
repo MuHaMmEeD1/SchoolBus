@@ -32,52 +32,147 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Background="Green"/>
 
+                <Border Width="110">
+                    <Border.Background>
+                        <ImageBrush ImageSource="../Images/schoolbus.png"/>
+                    </Border.Background>
+                </Border>
+                
                 <StackPanel Grid.Row="1" Margin="5 5 0 5">
-                    <Button Content="Reader" 
-                            Margin="5 5 5 5" 
+                    <Button 
+                            Margin="5 10 5 5" 
                             Command="{Binding ReaderChangeCommand}"
                             Background="#E67812"
                             BorderBrush="Black"
                             BorderThickness="1"
-                            />
-                    <Button Content="Class" 
-                            Margin="5 5 5 5"
+                            
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="BookEdit" Padding="0"
+                                                     Margin="-3 5 0 5"
+                                                     />
+                            <Label Grid.Column ="1"  Content="Reder" Foreground="White" 
+                                   Margin="12 -1 5 0"
+                                   />
+
+                        </Grid>
+                        
+                    </Button>
+                        <Button 
+                            Margin="5 10 5 5"
                             Command="{Binding ClassChangeCommand}"
                              Background="#E67812"
                              BorderBrush="Black"
                              BorderThickness="1"
-                            />
-                    <Button Content="Parent"
-                            Margin="5 5 5 5"
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="HomeLightbulb" Padding="0"
+                                                     Margin="-3 4 0 5"
+                                                     />
+                            <Label Grid.Column ="1"  Content="Class" Foreground="White" 
+                                   Margin="12 -1 5 0"
+                                   />
+
+                        </Grid>
+
+                    </Button>
+                    <Button 
+                            Margin="5 10 5 5"
                             Command="{Binding ParentChangeCommand}"
                              Background="#E67812"
                              BorderBrush="Black"
                              BorderThickness="1"
-                            />
-                    <Button Content="Student"
-                            Margin="5 5 5 5"
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="HumanMaleFemale" Padding="0"
+                                                     Margin="-3 4 0 5"
+                                                     />
+                            <Label Grid.Column ="1"  Content="Parent" Foreground="White" 
+                                   Margin="12 -1 5 0"
+                                   />
+
+                        </Grid>
+
+                    </Button>                    
+                    <Button 
+                            Margin="5 10 5 5"
                             Command="{Binding StudentChangeCommand}"
                              Background="#E67812"
                              BorderBrush="Black"
                              BorderThickness="1"
-                            />
-                    <Button Content="Car"
-                            Margin="5 5 5 5"
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="AccountSchoolOutline" Padding="0"
+                                                     Margin="-3 4 0 5"
+                                                     />
+                            <Label Grid.Column ="1"  Content="Student" Foreground="White" 
+                                   Margin="12 -1 5 0"
+                                   />
+
+                        </Grid>
+
+                    </Button>                    
+                    <Button 
+                            Margin="5 10 5 5"
                             Command="{Binding CarChangeCommand}"
                              Background="#E67812"
                              BorderBrush="Black"
                              BorderThickness="1"
-                            />
-                    <Button Content="Driver" 
-                            Margin="5 5 5 5"
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="CarSide" Padding="0"
+                                                     Margin="-3 4 0 5"
+                                                     />
+                            <Label Grid.Column ="1"  Content="Car" Foreground="White" 
+                                   Margin="12 -1 5 0"
+                                   />
+
+                        </Grid>
+
+                    </Button>                    
+                    <Button                            
+                        Margin="5 10 5 5"
                             Command="{Binding DriverChangeCommand}"
                              Background="#E67812"
                              BorderBrush="Black"
                              BorderThickness="1"
-                            />
-                   
+                            >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <materialDesign:PackIcon Kind="HumanMale" Padding="0"
+                                                     Margin="-3 4 0 5"
+                                                     />
+                            <Label Grid.Column ="1"  Content="Driver" Foreground="White" 
+                                   Margin="12 -1 5 0"
+                                   />
+
+                        </Grid>
+
+                    </Button>                   
                 </StackPanel>
                 
                 

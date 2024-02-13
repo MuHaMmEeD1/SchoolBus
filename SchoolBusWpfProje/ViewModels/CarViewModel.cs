@@ -74,14 +74,18 @@ namespace SchoolBusWpfProje.ViewModels
 
             var Parents = baseRepositories.GetAllEntity();
 
-            int Id = 0;
+            int Id = 1;
             ComboBox ModelComboBox = stackPanel.Children[0] as ComboBox;
             ComboBox MarkaComboBox = stackPanel.Children[1] as ComboBox;
             ComboBox CarNumberComboBox = stackPanel.Children[2] as ComboBox;
             ComboBox CapactyComboBox = stackPanel.Children[3] as ComboBox;
 
             var entitys = baseRepositories.GetAllEntity();
-            Id = entitys[entitys.Count - 1].Id+1;
+            if (entitys.Count > 0)
+            {
+                Id = entitys[entitys.Count - 1].Id + 1;
+            }
+            
 
             baseRepositories.Add(new Car()
             {
@@ -138,9 +142,13 @@ namespace SchoolBusWpfProje.ViewModels
 
             foreach (var dri in drivers)
             {
-                if(entity.Id == dri.CarId) { dri.CarId = 0; break; }
+                if(entity.Id == dri.CarId) { dri.CarId = null; break; }
             }
 
+            foreach (var st in entity.Students)
+            {
+                st.CarId=null;
+            }
             drRepo.Save();
             baseRepositories.Delete(entity);
             baseRepositories.Save();
